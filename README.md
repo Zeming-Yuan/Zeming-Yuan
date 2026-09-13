@@ -10,8 +10,15 @@ Python 后端开发（AI 应用方向）· 深圳
 
 ## 开源协作
 
-- [redis/redis-py](https://github.com/redis/redis-py)：[#4294](https://github.com/redis/redis-py/pull/4294)、[#4295](https://github.com/redis/redis-py/pull/4295) 已合并
-- [BossZhiPin_Job_Search](https://github.com/longsizhuo/BossZhiPin_Job_Search)：[#40](https://github.com/longsizhuo/BossZhiPin_Job_Search/pull/40) 毒缓存 bug 双侧修复（协作中）
+**已合并**
+
+- [wandb/rai-toolkit](https://github.com/wandb/rai-toolkit) — RAG 检索质量评测：[#37](https://github.com/wandb/rai-toolkit/pull/37) 新增 `RetrievalRelevanceScorer`（LLM-as-a-Judge 逐 chunk 相关性评分）、[#58](https://github.com/wandb/rai-toolkit/pull/58) 新增 `ContextPrecisionScorer` / `ContextRecallScorer`
+- [redis/redis-py](https://github.com/redis/redis-py) — [#4294](https://github.com/redis/redis-py/pull/4294)、[#4295](https://github.com/redis/redis-py/pull/4295) 示例 notebook 文档修正
+
+**协作中**
+
+- [TencentCloud/TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) — [#1365](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1365)、[#1366](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1366) 修复记忆提炼链路上游缺陷（向量写入静默失败 / 会话结束不触发提炼）
+- [longsizhuo/BossZhiPin_Job_Search](https://github.com/longsizhuo/BossZhiPin_Job_Search) — [#40](https://github.com/longsizhuo/BossZhiPin_Job_Search/pull/40) 毒缓存 bug 双侧修复
 
 ## 技术栈
 
