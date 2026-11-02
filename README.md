@@ -8,7 +8,6 @@
 把模型接到真实业务里：能派活的数字员工、可评测的知识库、能对话预览发布的编程助手。  
 关心边界、证据，和能不能私有化落地。
 
-<!-- 顶栏技能图标：https://skillicons.dev -->
 <p>
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=python,fastapi,redis,postgres,sqlite,docker,react,ts,nodejs,vite,linux,githubactions" alt="skills" />
@@ -21,41 +20,24 @@
 
 ## 🔭 当前在做
 
-与团队推进多条产品线（仓库多为私有，此处只写产品定位与能力）：
-
-### 数字员工总台
-- 浏览器创建数字员工并派到多台电脑执行；节点主动 WSS 外连，无需公网入站
-- 能力模式白名单（只读 / 读写 / 浏览器 / 执行）+ 写操作审批闸门；内核级沙箱（macOS Seatbelt / Linux bubblewrap）
-- Hub：Python · FastAPI · SQLAlchemy async · SQLite / PostgreSQL · MCP · BM25s + jieba；Web：React 19 · TypeScript · Vite · Tailwind；飞书渠道、团队 Markdown 资料库、网页录制 → Skill、看屏 / 远程终端
-
-### 编程助手
-- Web 工作台：浏览器对话、预览、下载与发布；DeepSeek 调本机编码智能体；PDF 文字提取（poppler 守卫进程）· Docker 运行时隔离
-- 桌面端：多 Agent 会话 GUI（Claude Code / Codex / Cursor / Grok 等）；按项目组织会话与 Git worktree；Tauri + Rust + Vite + CodeMirror
-
-### 知识库与有据回答
-- 工厂场景私有化 AI 知识库：SOP / 设备手册入库、检索问答、金标评测与部署证据；数据不出厂
-- 本机对话 / 嵌入端点（OpenAI 兼容）可指向客户算力；公开基准手册 + runner 复测
-- 与直播 / 客服侧「有据回答」HTTP Adapter 衔接，同一套检索与引用约束复用
-
-### 社媒 · 直播 · 客服
-- 社媒一分多发：中文母稿 → 英文成片 → 两道审核 → 分发确认；仅官方 OAuth 授权账号可发（Facebook / Instagram / YouTube / X / TikTok 等）
-- AI 语音直播：单房间评论接收 → 知识库 / 通用模型回答 → 克隆音色播报（抖音 / 视频号方向）；SQLite 会话账本 · DeepSeek
-- 渠道客服：WhatsApp ↔ Chatwoot 坐席闭环 + AI Gateway；微信桌面 Assist（FAQ + DeepSeek，人工接管）；工厂外贸咨询场景的知识库问答 + 人工接管
+- **数字员工总台** — Agent 创建与多机派活；能力白名单 + 写操作审批；飞书 / Skill / 看屏远程；Hub FastAPI · Web React 19
+- **编程助手** — Web 对话 / 预览 / 发布（DeepSeek + 本机智能体）；桌面多 Agent 会话与 worktree（Tauri）
+- **知识库与有据回答** — 工厂文档私有化问答 + 金标评测；直播 / 客服复用同一套检索与引用约束
+- **社媒 · 直播 · 客服** — OAuth 一分多发；评论 → 有据回答 → 克隆音色播报；WhatsApp / 微信坐席与 Assist
 
 ---
 
 ## 🧱 工程能力
 
-- **评测与证据** — 金标集、hit@k / 回归 runner、部署证据链；问答与 Agent 链路可复现对比
-- **私有化交付** — Docker Compose / on-prem、本机或客户侧推理端点；数据默认不出厂
-- **Agent 安全边界** — 能力白名单、写操作审批闸门、操作审计；默认最小权限
-- **全栈落地** — FastAPI / MCP 后端 · React / Tauri 前端桌面 · Redis / PostgreSQL · CI 与 Compose 发布
+- **评测与证据** — 金标集、hit@k / 回归 runner、部署证据链
+- **私有化交付** — Docker Compose / on-prem；数据默认不出厂
+- **Agent 安全边界** — 能力白名单、审批闸门、操作审计；默认最小权限
+- **全栈落地** — FastAPI / MCP · React / Tauri · Redis / PostgreSQL · CI + Compose
 
 ---
 
 ## 📦 开源
 
-<!-- pin 卡片：https://github.com/anuraghazra/github-readme-stats -->
 <p>
   <a href="https://github.com/Zeming-Yuan/capstone-ai-kb">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=Zeming-Yuan&repo=capstone-ai-kb&theme=tokyonight&hide_border=true" alt="capstone-ai-kb" />
@@ -68,24 +50,17 @@
   </a>
 </p>
 
-- **[capstone-ai-kb](https://github.com/Zeming-Yuan/capstone-ai-kb)** — RAG 知识库问答 + NL2SQL ReAct Agent（手写 ReAct，不调 LangChain）
-  - FastAPI · ChromaDB · Redis · Docker；手标 42 条中文真值（hit@3 = 0.79 / hit@10 = 0.90）· 22/22 测试 · [线上 Demo](https://capstone-ai-kb.onrender.com/docs)
-- **[claude-code-memory-system](https://github.com/Zeming-Yuan/claude-code-memory-system)** — Claude Code 记忆网关（基于腾讯开源引擎二次开发）
-  - FastMCP · L0–L3 分层记忆 · Hooks 全自动化 · 本地 BM25（jieba）+ 向量双路检索
-- **[english-coach](https://github.com/Zeming-Yuan/english-coach)** — **进行中** · 零基础英语 AI 学习
-  - FSRS 间隔复习 · DeepSeek 词卡 · React 19 + FastAPI · 学习科学脚手架（意群切分 / 提取练习等）· 108 测试全绿
+- **[capstone-ai-kb](https://github.com/Zeming-Yuan/capstone-ai-kb)** — 手写 ReAct RAG + NL2SQL · hit@10 = 0.90 · [Demo](https://capstone-ai-kb.onrender.com/docs)
+- **[claude-code-memory-system](https://github.com/Zeming-Yuan/claude-code-memory-system)** — Claude Code 分层记忆网关（L0–L3 · FastMCP · Hooks）
+- **[english-coach](https://github.com/Zeming-Yuan/english-coach)** — 进行中 · FSRS + DeepSeek 英语学习 · 108 测试
 
 ---
 
 ## 🤝 开源协作
 
-**已合并**
-- [wandb/rai-toolkit](https://github.com/wandb/rai-toolkit) — RAG 检索质量评测：[#37](https://github.com/wandb/rai-toolkit/pull/37) `RetrievalRelevanceScorer`、[#58](https://github.com/wandb/rai-toolkit/pull/58) `ContextPrecisionScorer` / `ContextRecallScorer`
-- [redis/redis-py](https://github.com/redis/redis-py) — [#4294](https://github.com/redis/redis-py/pull/4294)、[#4295](https://github.com/redis/redis-py/pull/4295) 示例 notebook 文档修正
-- [BossZhiPin_Job_Search](https://github.com/longsizhuo/BossZhiPin_Job_Search) — [#40](https://github.com/longsizhuo/BossZhiPin_Job_Search/pull/40) 关键词提取失败不再写入空列表毒化粗筛缓存
+**已合并** · [wandb/rai-toolkit](https://github.com/wandb/rai-toolkit) [#37](https://github.com/wandb/rai-toolkit/pull/37) [#58](https://github.com/wandb/rai-toolkit/pull/58) · [redis/redis-py](https://github.com/redis/redis-py) [#4294](https://github.com/redis/redis-py/pull/4294) [#4295](https://github.com/redis/redis-py/pull/4295) · [BossZhiPin_Job_Search](https://github.com/longsizhuo/BossZhiPin_Job_Search) [#40](https://github.com/longsizhuo/BossZhiPin_Job_Search/pull/40)
 
-**协作中**
-- [TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) — [#1365](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1365)（closed，未合并）、[#1366](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1366)（open）记忆提炼 / 向量写入相关修复
+**协作中** · [TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) [#1365](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1365) [#1366](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1366)
 
 ---
 
