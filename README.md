@@ -5,8 +5,8 @@
 <!-- Typing SVG: https://github.com/DenverCoder1/readme-typing-svg -->
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1200&color=79C0FF&center=true&vCenter=true&width=520&lines=Python+%C2%B7+AI+%E5%BA%94%E7%94%A8+%C2%B7+RAG+%2F+Agent+%2F+MCP;FastAPI+%C2%B7+Redis+%C2%B7+Docker+%C2%B7+%E7%A7%81%E6%9C%89%E5%8C%96%E8%90%BD%E5%9C%B0;%E5%B9%BF%E4%B8%9C+%C2%B7+%E6%8A%8A%E6%A8%A1%E5%9E%8B%E6%8E%A5%E8%BF%9B%E7%9C%9F%E5%AE%9E%E4%B8%9A%E5%8A%A1)](https://git.io/typing-svg)
 
-把模型接到真实业务里：能派活的数字员工、可评测的知识库、能对话预览发布的编程助手。  
-关心边界、证据，和能不能私有化落地。
+把大模型接到能跑在真实环境里的系统上：多机数字员工、可评测知识库、编程助手，以及社媒与多渠道客服。  
+偏好私有化交付、审批与审计边界、金标 / 证据可复现——少讲概念，多交能上线的东西。
 
 <p>
   <a href="https://skillicons.dev">
@@ -20,10 +20,10 @@
 
 ## 🔭 当前在做
 
-- **数字员工总台** — Agent 创建与多机派活；能力白名单 + 写操作审批；飞书 / Skill / 看屏远程；Hub FastAPI · Web React 19
-- **编程助手** — Web 对话 / 预览 / 发布（DeepSeek + 本机智能体）；桌面多 Agent 会话与 worktree（Tauri）
-- **知识库与有据回答** — 工厂文档私有化问答 + 金标评测；直播 / 客服复用同一套检索与引用约束
-- **社媒 · 直播 · 客服** — OAuth 一分多发；评论 → 有据回答 → 克隆音色播报；WhatsApp / 微信坐席与 Assist
+- **数字员工总台** — 浏览器创建 Agent、派到多台电脑执行；看屏 / 远程管理 / 审批闸门；飞书等渠道与技能录制安装
+- **编程助手** — Web 对话 / 预览 / 发布（DeepSeek + 本机编码智能体）；桌面端多 Agent 并行会话与 worktree
+- **工厂知识库** — SOP / 手册入库、检索问答、金标评测与部署证据；数据不出厂；直播 / 客服复用「有据再答」
+- **社媒 · 直播 · 客服** — 一稿多平台授权分发；评论 → 知识库回答 → 克隆音色播报；WhatsApp / 微信坐席与 Assist
 
 ---
 
@@ -50,7 +50,7 @@
   </a>
 </p>
 
-- **[capstone-ai-kb](https://github.com/Zeming-Yuan/capstone-ai-kb)** — 手写 ReAct RAG + NL2SQL · hit@10 = 0.90 · [Demo](https://capstone-ai-kb.onrender.com/docs)
+- **[capstone-ai-kb](https://github.com/Zeming-Yuan/capstone-ai-kb)** — RAG + NL2SQL ReAct（手写）· hit@10 = 0.90 · [Demo](https://capstone-ai-kb.onrender.com/docs)
 - **[claude-code-memory-system](https://github.com/Zeming-Yuan/claude-code-memory-system)** — Claude Code 分层记忆网关（L0–L3 · FastMCP · Hooks）
 - **[english-coach](https://github.com/Zeming-Yuan/english-coach)** — 进行中 · FSRS + DeepSeek 英语学习 · 108 测试
 
@@ -58,9 +58,13 @@
 
 ## 🤝 开源协作
 
-**已合并** · [wandb/rai-toolkit](https://github.com/wandb/rai-toolkit) [#37](https://github.com/wandb/rai-toolkit/pull/37) [#58](https://github.com/wandb/rai-toolkit/pull/58) · [redis/redis-py](https://github.com/redis/redis-py) [#4294](https://github.com/redis/redis-py/pull/4294) [#4295](https://github.com/redis/redis-py/pull/4295) · [BossZhiPin_Job_Search](https://github.com/longsizhuo/BossZhiPin_Job_Search) [#40](https://github.com/longsizhuo/BossZhiPin_Job_Search/pull/40)
+**已合并**
+- [wandb/rai-toolkit](https://github.com/wandb/rai-toolkit) [#37](https://github.com/wandb/rai-toolkit/pull/37) [#58](https://github.com/wandb/rai-toolkit/pull/58) — RAG 检索评测
+- [redis/redis-py](https://github.com/redis/redis-py) [#4294](https://github.com/redis/redis-py/pull/4294) [#4295](https://github.com/redis/redis-py/pull/4295) — 示例文档
+- [BossZhiPin_Job_Search](https://github.com/longsizhuo/BossZhiPin_Job_Search) [#40](https://github.com/longsizhuo/BossZhiPin_Job_Search/pull/40) — 粗筛缓存修复
 
-**协作中** · [TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) [#1365](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1365) [#1366](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1366)
+**协作中**
+- [TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) [#1365](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1365) [#1366](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1366)
 
 ---
 
