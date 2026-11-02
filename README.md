@@ -5,6 +5,8 @@
 <!-- Typing SVG: https://github.com/DenverCoder1/readme-typing-svg -->
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1200&color=79C0FF&center=true&vCenter=true&width=520&lines=Python+%C2%B7+AI+%E5%BA%94%E7%94%A8+%C2%B7+RAG+%2F+Agent+%2F+MCP;FastAPI+%C2%B7+Redis+%C2%B7+Docker+%C2%B7+%E7%A7%81%E6%9C%89%E5%8C%96%E8%90%BD%E5%9C%B0;%E5%B9%BF%E4%B8%9C+%C2%B7+%E6%8A%8A%E6%A8%A1%E5%9E%8B%E6%8E%A5%E8%BF%9B%E7%9C%9F%E5%AE%9E%E4%B8%9A%E5%8A%A1)](https://git.io/typing-svg)
 
+**写作** · [掘金 · Python 上下文管理器深度剖析](https://juejin.cn/post/7676404079284469796)
+
 把大模型接到能跑在真实环境里的系统上：多机数字员工、可评测的私有化知识库、能对话 / 预览 / 发布的编程助手。  
 合入前先过金标和 hit@k；对话与嵌入按 OpenAI 兼容协议留在本机，部署时改指向客户算力，语料默认不出厂。  
 Agent 只有白名单里的能力，写操作过审批，执行落在内核沙箱里。公开仓库把这些选择做成可复跑的实现和数字。
