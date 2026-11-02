@@ -5,8 +5,7 @@
 <!-- Typing SVG: https://github.com/DenverCoder1/readme-typing-svg -->
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1200&color=79C0FF&center=true&vCenter=true&width=520&lines=Python+%C2%B7+AI+%E5%BA%94%E7%94%A8+%C2%B7+RAG+%2F+Agent+%2F+MCP;FastAPI+%C2%B7+Redis+%C2%B7+Docker+%C2%B7+%E7%A7%81%E6%9C%89%E5%8C%96%E8%90%BD%E5%9C%B0;%E5%B9%BF%E4%B8%9C+%C2%B7+%E6%8A%8A%E6%A8%A1%E5%9E%8B%E6%8E%A5%E8%BF%9B%E7%9C%9F%E5%AE%9E%E4%B8%9A%E5%8A%A1)](https://git.io/typing-svg)
 
-把大模型接到能跑在真实环境里的系统上：多机数字员工、可评测的私有化知识库、能对话 / 预览 / 发布的编程助手，以及社媒分发与多渠道客服。  
-偏好可私有化交付、带审批与审计边界、有金标 / 证据可复现的工程实现——少讲概念，多交能上线的东西。
+把大模型接到能上线的系统里：派得出去的数字员工、能预览和发布的编程助手、回答带出处的知识库。
 
 <!-- 顶栏技能图标：https://skillicons.dev -->
 <p>
@@ -21,42 +20,29 @@
 
 ## 🔭 当前在做
 
-与团队推进多条产品线（仓库多为私有，此处只写产品定位与能力）：
-
 ### 数字员工总台
-- 浏览器创建数字员工并派到多台电脑执行；节点主动 WSS 外连，无需公网入站
-- 能力模式白名单（只读 / 读写 / 浏览器 / 执行）+ 写操作审批闸门；内核级沙箱（macOS Seatbelt / Linux bubblewrap）
-- Hub：Python 3.12 · FastAPI · SQLAlchemy 2.0 async · SQLite / PostgreSQL（asyncpg）· MCP · BM25s + jieba
-- Web：React 19 · TypeScript · Vite · Tailwind；飞书渠道、团队 Markdown 资料库、网页录制 → Skill、看屏 / 远程终端
+- 在浏览器里创建数字员工，派到多台电脑上干活；电脑自己连出来，不用在公网开端口
+- 能力只开四档：只读、读写、浏览器、执行。要改东西或要执行，先过审批；进程关在 macOS Seatbelt 或 Linux bubblewrap 里
+- 可以从飞书派活，也能看屏、开远程终端，把一次网页操作录成 Skill
 
 ### 编程助手
-- Web 工作台：浏览器对话、预览、下载与发布；DeepSeek 调本机编码智能体；PDF 文字提取（poppler 守卫进程）· Docker 运行时隔离
-- 桌面端：多 Agent 会话 GUI（Claude Code / Codex / Cursor / Grok 等）；按项目组织会话与 Git worktree
-- 技术栈：Tauri + Rust + Vite + CodeMirror；Node.js 22；可选支付宝支付通道
+- 网页上对话、看预览、直接发布；DeepSeek 调本机编码智能体，运行时用 Docker 隔开
+- 桌面端把 Claude Code、Codex、Cursor、Grok 按项目分开，各自一个 Git worktree（Tauri）
 
 ### 知识库与有据回答
-- 工厂场景私有化 AI 知识库：SOP / 设备手册入库、检索问答、金标评测与部署证据；数据不出厂
-- 载体 DocsGPT；本机对话 / 嵌入端点（OpenAI 兼容）可指向客户算力；公开基准手册 + runner 复测
-- 与直播 / 客服侧「有据回答」HTTP Adapter 衔接，同一套检索与引用约束复用
+- 工厂 SOP 和设备手册留在现场，回答必须带原文出处
+- 直播评论和客服提问共用这套检索；出处不够就交给人
 
-### 社媒 · 直播 · 客服
-- 社媒一分多发：中文母稿 → 英文成片 → 两道审核 → 分发确认；仅官方 OAuth 授权账号可发（Facebook / Instagram / YouTube / X / TikTok 等）；发布器基于 Postiz（NestJS · Prisma · pnpm · Docker Compose）二次品牌化
-- AI 语音直播：单房间评论接收 → 知识库 / 通用模型回答 → 克隆音色播报（抖音 / 视频号方向）；SQLite 会话账本 · DeepSeek · 百炼云端音色
-- 渠道客服：WhatsApp ↔ Chatwoot 坐席闭环 + AI Gateway；微信桌面 Assist（FAQ + DeepSeek，人工接管）；工厂外贸咨询场景的知识库问答 + 人工接管
-
-### 企业系统与运营后台
-- OPC 类企业管理系统：入驻主体 / 物业资源 / 政府·运营·物业多方协作；NestJS · Prisma · PostgreSQL · React 19 · Vite · Playwright
-- 多项目只读运营控制台：聚合编程助手与数字员工的指标 / 健康 / 审计
-- 本地双机视频批量生产：LTX 竖屏短片无人值守流水线（热停与片段拼接固定规格）
+另有社媒一分多发 / 直播客服 / 企业与运营后台在推进（多为私有）。
 
 ---
 
 ## 🧱 工程能力
 
-- **评测与证据** — 金标集、hit@k / 回归 runner、部署证据链；改检索或提示先过评测再合入；没有数字的「看起来能答」不算完成
-- **私有化交付** — Docker Compose / on-prem；本机或客户算力端点；敏感数据默认不出厂；可复现的部署与回滚路径
-- **Agent 安全边界** — 能力白名单、高风险写操作审批闸门、操作审计日志；内核沙箱（Seatbelt / bubblewrap）；默认最小权限
-- **全栈落地** — FastAPI / NestJS / MCP 后端 · React / Tauri 前端与桌面 · Redis / PostgreSQL · CI + Compose 交付
+- **评测与证据** — [capstone-ai-kb](https://github.com/Zeming-Yuan/capstone-ai-kb) 金标 42 条中文真值，hit@3 = 0.79 / hit@10 = 0.90
+- **私有化交付** — [claude-code-memory-system](https://github.com/Zeming-Yuan/claude-code-memory-system) 记忆网关只听 127.0.0.1，用本地 SQLite 检索，不配向量也能跑
+- **密钥不进备份** — [english-coach 的备份测试](https://github.com/Zeming-Yuan/english-coach/blob/dev/tests/test_backup_v2.py) 断言导出 JSON 里没有 `llm_api_key`
+- **全栈落地** — [english-coach](https://github.com/Zeming-Yuan/english-coach) 同一个仓库里交付 React 19 和 FastAPI
 
 ---
 
@@ -75,12 +61,12 @@
   </a>
 </p>
 
-- **[capstone-ai-kb](https://github.com/Zeming-Yuan/capstone-ai-kb)** — RAG 知识库问答 + NL2SQL ReAct Agent（手写 ReAct，不调 LangChain）
-  - FastAPI · ChromaDB · Redis · Docker · JWT；CJK 路由（中文纯向量 / 英文 BM25+RRF）；手标 42 条中文真值 hit@3 = 0.79 / hit@10 = 0.90 · 22/22 测试 · [线上 Demo](https://capstone-ai-kb.onrender.com/docs)
-- **[claude-code-memory-system](https://github.com/Zeming-Yuan/claude-code-memory-system)** — Claude Code 记忆网关（基于腾讯开源引擎二次开发）
-  - FastMCP · L0–L3 分层记忆 · Hooks 全自动化 · 本地 BM25（jieba）+ 向量双路检索 · 渐进式披露注入
-- **[english-coach](https://github.com/Zeming-Yuan/english-coach)** — **进行中** · 零基础英语 AI 学习
-  - FSRS 间隔复习 · DeepSeek 词卡 · React 19 + FastAPI · 意群切分 / 提取练习 / 渐褪提示等学习科学脚手架 · edge-tts · 108 测试全绿
+- **[capstone-ai-kb](https://github.com/Zeming-Yuan/capstone-ai-kb)** — 手写 ReAct 的 RAG + NL2SQL，不套 LangChain
+  - 42 条中文真值 hit@3 = 0.79 / hit@10 = 0.90 · 22/22 测试 · [线上 Demo](https://capstone-ai-kb.onrender.com/docs)
+- **[claude-code-memory-system](https://github.com/Zeming-Yuan/claude-code-memory-system)** — 给 Claude Code 加分层记忆：从 L0 对话提炼到 L3 画像，Hooks 自动写入和召回
+  - 完整画像约 5700 字符，压到每轮注入约 630 字符（约 11%）
+- **[english-coach](https://github.com/Zeming-Yuan/english-coach)** — 进行中 · 零基础英语：FSRS 排复习，DeepSeek 出词卡
+  - 课程 20 级递进 · 浏览器门禁 T01–T21（双视口，缺一则验收失败）
 
 ---
 
@@ -89,55 +75,22 @@
 **已合并**
 - [wandb/rai-toolkit](https://github.com/wandb/rai-toolkit) — RAG 检索质量评测：[#37](https://github.com/wandb/rai-toolkit/pull/37) `RetrievalRelevanceScorer`、[#58](https://github.com/wandb/rai-toolkit/pull/58) `ContextPrecisionScorer` / `ContextRecallScorer`
 - [redis/redis-py](https://github.com/redis/redis-py) — [#4294](https://github.com/redis/redis-py/pull/4294)、[#4295](https://github.com/redis/redis-py/pull/4295) 示例 notebook 文档修正
-- [BossZhiPin_Job_Search](https://github.com/longsizhuo/BossZhiPin_Job_Search) — [#40](https://github.com/longsizhuo/BossZhiPin_Job_Search/pull/40) 关键词提取失败不再写入空列表毒化粗筛缓存
+- [BossZhiPin_Job_Search](https://github.com/longsizhuo/BossZhiPin_Job_Search) — [#40](https://github.com/longsizhuo/BossZhiPin_Job_Search/pull/40) 关键词提取失败不再写入空列表，避免粗筛缓存被毒化
 
-**协作中**
-- [TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) — [#1365](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1365)（closed，未合并）、[#1366](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1366)（open）记忆提炼 / 向量写入相关修复
+**正在修**
+- [TencentDB-Agent-Memory #1366](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1366) — `POST /session/end` 只把 flush 重新入队，到不了 L1 提炼；这个 PR 让 flush 落到 `executeL1`
+
+> 已关闭、未合并：[#1365](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1365)（store-pool 的 embedding 没有把 `sendDimensions` 传下去）。
 
 ---
 
 ## 🛠️ 技术栈
 
-**Backend**
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
-![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
-![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
-
-**AI / RAG / Agent**
-
-![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6F61?style=for-the-badge&logo=databricks&logoColor=white)
-![bge-m3](https://img.shields.io/badge/bge--m3-Embedding-5B21B6?style=for-the-badge)
-![BM25](https://img.shields.io/badge/BM25%20%2B%20RRF-Hybrid%20Search-111827?style=for-the-badge)
-![MCP](https://img.shields.io/badge/MCP%20%2F%20FastMCP-Protocol-0EA5E9?style=for-the-badge)
-![ReAct](https://img.shields.io/badge/ReAct-Hand--written-F59E0B?style=for-the-badge)
-![DeepSeek](https://img.shields.io/badge/DeepSeek-LLM-4F46E5?style=for-the-badge)
-
-**Frontend / Desktop**
-
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Tauri](https://img.shields.io/badge/Tauri-24C8DB?style=for-the-badge&logo=tauri&logoColor=white)
-![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6F61?style=for-the-badge)
+![DeepSeek](https://img.shields.io/badge/DeepSeek-4F46E5?style=for-the-badge)
 ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
-
-**DevOps / Delivery / Channels**
-
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Compose](https://img.shields.io/badge/Compose-%E7%A7%81%E6%9C%89%E5%8C%96-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
-![Feishu](https://img.shields.io/badge/Feishu-%E9%A3%9E%E4%B9%A6-00D6B9?style=for-the-badge)
-![Eval](https://img.shields.io/badge/%E8%AF%84%E6%B5%8B%E9%87%91%E6%A0%87-Evidence--Gate-10B981?style=for-the-badge)
-![Audit](https://img.shields.io/badge/%E5%AE%A1%E6%89%B9%20%26%20%E5%AE%A1%E8%AE%A1-Boundary-EF4444?style=for-the-badge)
 
 ---
 
