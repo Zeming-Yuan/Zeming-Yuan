@@ -136,7 +136,7 @@
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
 ![Feishu](https://img.shields.io/badge/Feishu-%E9%A3%9E%E4%B9%A6-00D6B9?style=for-the-badge)
-![Eval](https://img.shields.io/badge/%E8%AF%84%E6%B5%8B%E9%87%91%E6%A0%87-Evidence-Gate-10B981?style=for-the-badge)
+![Eval](https://img.shields.io/badge/%E8%AF%84%E6%B5%8B%E9%87%91%E6%A0%87-Evidence--Gate-10B981?style=for-the-badge)
 ![Audit](https://img.shields.io/badge/%E5%AE%A1%E6%89%B9%20%26%20%E5%AE%A1%E8%AE%A1-Boundary-EF4444?style=for-the-badge)
 
 ---
