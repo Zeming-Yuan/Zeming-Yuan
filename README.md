@@ -21,17 +21,19 @@
 ## 🔭 当前在做
 
 ### 数字员工总台
-- 在浏览器里创建数字员工，派到多台电脑上干活；电脑自己连出来，不用在公网开端口
-- 能力只开四档：只读、读写、浏览器、执行。要改东西或要执行，先过审批；进程关在 macOS Seatbelt 或 Linux bubblewrap 里
-- 可以从飞书派活，也能看屏、开远程终端，把一次网页操作录成 Skill
+- 要从浏览器把数字员工派到多台电脑上执行
+- 节点只做 WSS 出站连 Hub，没有入站端口；能力按只读 / 读写 / 浏览器 / 执行白名单下发，执行进程放进 macOS Seatbelt 或 Linux bubblewrap；Hub 用 FastAPI · SQLAlchemy 2.0 async，技能侧 MCP + BM25s + jieba，渠道接飞书
+- 写操作必须过审批闸门，没批不执行
 
 ### 编程助手
-- 网页上对话、看预览、直接发布；DeepSeek 调本机编码智能体，运行时用 Docker 隔开
-- 桌面端把 Claude Code、Codex、Cursor、Grok 按项目分开，各自一个 Git worktree（Tauri）
+- 浏览器里要能对话、预览、下载和发布，编码落在本机智能体上
+- DeepSeek 调度本机编码智能体；桌面端 Tauri + Rust + Vite；同一项目并行开 Claude Code / Codex / Cursor / Grok 会话，按项目挂 Git worktree
+- 编码运行时用 Docker 隔离
 
 ### 知识库与有据回答
-- 工厂 SOP 和设备手册留在现场，回答必须带原文出处
-- 直播评论和客服提问共用这套检索；出处不够就交给人
+- 工厂同事要查 SOP 和设备手册，回答必须带得出处
+- 库建在 DocsGPT 上；对话和嵌入走本机 OpenAI 兼容端点，可以改指到客户自己的算力；直播和客服共用这套检索，证据不够就转人工
+- 金标集和 runner 复测留下部署证据；数据不出厂
 
 另有社媒一分多发 / 直播客服 / 企业与运营后台在推进（多为私有）。
 
