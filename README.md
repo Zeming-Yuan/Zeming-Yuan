@@ -1,62 +1,132 @@
-# 袁仕杰 Zeming
+<!--
+视觉参考（只学布局，不抄文案）：
+- DenverCoder1 — typing SVG + for-the-badge 社交/统计条 + pin 卡片
+- anuraghazra — 短 About + 小型 topic 图标 + stats / top-langs 并排 + pin
+- rahuldkjain / Ileriayo markdown-badges — Languages and Tools 用图标墙 / shields
+- iampavangandhi — flat-square 社交 badge + stats 可折叠
+- daniakash — 极简「Current Projects」项目清单（内容密度参考）
+- guanguans — 中文工程向 + github-readme-stats
+- abhisheknaiidu/awesome-github-profile-readme — 分类合集
+-->
 
-Python 后端 · AI 应用开发｜RAG / Agent / MCP｜广东
+<div align="center">
 
-做能跑在真实环境里的 AI 系统：数字员工总台、知识库问答、编程助手，以及社媒与客服链路。偏好可评测、可私有化、带审批与审计边界的工程实现。
+# Hi, I'm Zeming
 
-## 当前在做
+<!-- Typing SVG: https://github.com/DenverCoder1/readme-typing-svg -->
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1200&color=79C0FF&center=true&vCenter=true&width=520&lines=Python+%C2%B7+AI+%E5%BA%94%E7%94%A8+%C2%B7+RAG+%2F+Agent+%2F+MCP;FastAPI+%C2%B7+Redis+%C2%B7+Docker+%C2%B7+%E7%A7%81%E6%9C%89%E5%8C%96%E8%90%BD%E5%9C%B0;%E5%B9%BF%E4%B8%9C+%C2%B7+%E6%8A%8A%E6%A8%A1%E5%9E%8B%E6%8E%A5%E8%BF%9B%E7%9C%9F%E5%AE%9E%E4%B8%9A%E5%8A%A1)](https://git.io/typing-svg)
 
-与团队推进多条产品线（仓库多为私有，此处只写产品定位与能力）：
+把模型接到真实业务里：能派活的数字员工、可评测的知识库、能对话预览发布的编程助手。  
+关心边界、证据，和能不能私有化落地。
 
-**AI 数字员工**
-- 总台 + 子节点：浏览器创建数字员工并派到多台电脑执行任务；节点主动 WSS 外连，无需公网入站；能力模式白名单（只读 / 读写 / 浏览器 / 执行）+ 写操作审批闸门；内核级沙箱（macOS Seatbelt / Linux bubblewrap）
-- Hub：Python 3.12 · FastAPI · SQLAlchemy 2.0 async · SQLite / PostgreSQL（asyncpg）· MCP · BM25s + jieba；Web：React 19 · TypeScript · Vite 7 · Tailwind 4
-- 飞书等消息渠道、团队 Markdown 资料库、网页录制 → 可安装 Skill、看屏 / 远程终端 / 集中同屏
+<!-- 顶栏技能图标：https://skillicons.dev -->
+<p>
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=python,fastapi,redis,postgres,sqlite,docker,react,ts,nodejs,vite,linux,githubactions" alt="skills" />
+  </a>
+</p>
 
-**编程助手**
-- Web 工作台：浏览器对话、预览、下载与发布；DeepSeek 调本机编码智能体；附件 PDF 文字提取（poppler 守卫进程）· Docker 运行时隔离 · 支付宝可选支付通道 · Node.js 22
-- 桌面端：多 Agent 会话 GUI（Claude Code / Codex / Cursor / Grok Build 等）；按项目组织会话与 Git worktree；Tauri + Rust + Vite + CodeMirror
+</div>
 
-**知识库与评测**
-- 工厂场景私有化 AI 知识库：SOP / 设备手册入库、检索问答、金标评测与部署证据；数据不出厂；载体 DocsGPT，本机对话 / 嵌入端点（OpenAI 兼容）可配置指向客户算力
-- 公开基准手册 + runner 复测；与直播 / 客服侧「有据回答」HTTP Adapter 衔接
+---
 
-**社媒 · 直播 · 客服**
-- 社媒一分多发：中文母稿 → 英文成片 → 两道审核 → 分发确认；仅官方 OAuth 授权账号可一键发（Facebook / Instagram / YouTube / X / TikTok 等）；发布器基于 Postiz（NestJS · Prisma · pnpm · Docker Compose）二次品牌化
-- AI 语音直播：单房间评论接收 → 知识库 / 通用模型回答 → 克隆音色播报（抖音 / 视频号择一）；SQLite 会话账本 · DeepSeek · 百炼云端音色；完整自动开播仍在验收
-- 渠道客服：WhatsApp ↔ Chatwoot 坐席真实往返；中间层 AI Gateway；微信桌面 Assist（FAQ + DeepSeek，人工接管）；阿里国际站 BMS 工厂咨询（知识库问答 + 人工接管，业务编码进行中）
+## 🔭 当前在做
 
-**企业系统与运营后台**
-- OPC 企业管理系统：入驻主体 / 物业资源 / 政府·运营·物业多方协作；NestJS · Prisma · PostgreSQL · React 19 · Vite · Playwright
-- 多项目只读运营控制台：聚合编程助手与数字员工的指标 / 健康 / 审计；规划 Go 后端 + React · TypeScript · PostgreSQL
-- 本地双 Spark 无人值守视频流水线：LTX 5 秒竖屏（720×1280 · 30fps）批量生产，热停与片段拼接固定规格
+- **数字员工总台** — 创建 Agent、派到多台电脑执行；审批闸门、看屏 / 远程管理；飞书等渠道接入
+- **编程助手** — Web 对话 / 预览 / 发布；桌面端并行多 Agent 会话（worktree）
+- **知识库与有据回答** — 工厂文档私有化问答 + 金标评测；直播 / 客服复用同一套「有据再答」
+- **社媒与客服** — 一稿多平台授权分发；WhatsApp / 微信等渠道坐席与 Assist
 
-## 开源项目（独立开发）
+---
 
-- [capstone-ai-kb](https://github.com/Zeming-Yuan/capstone-ai-kb) — RAG 知识库问答 + NL2SQL ReAct Agent：手写 ReAct（不调 LangChain）· FastAPI · ChromaDB · Redis · Docker；手标 42 条中文真值（hit@3 = 0.79 / hit@10 = 0.90）· 22/22 测试 · [线上 Demo](https://capstone-ai-kb.onrender.com/docs)
-- [claude-code-memory-system](https://github.com/Zeming-Yuan/claude-code-memory-system) — Claude Code 记忆网关（基于腾讯开源引擎二次开发）：FastMCP · L0–L3 分层记忆 · Hooks 全自动化 · 本地 BM25（jieba）+ 向量双路检索
-- [english-coach](https://github.com/Zeming-Yuan/english-coach) — **进行中** · 零基础英语 AI 学习：FSRS 间隔复习 · DeepSeek 词卡 · React 19 + FastAPI · 学习科学脚手架（意群切分 / 提取练习等）· 108 测试全绿
+## 📦 开源
 
-## 开源协作
+<!-- pin 卡片：https://github.com/anuraghazra/github-readme-stats -->
+<p>
+  <a href="https://github.com/Zeming-Yuan/capstone-ai-kb">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Zeming-Yuan&repo=capstone-ai-kb&theme=tokyonight&hide_border=true" alt="capstone-ai-kb" />
+  </a>
+  <a href="https://github.com/Zeming-Yuan/claude-code-memory-system">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Zeming-Yuan&repo=claude-code-memory-system&theme=tokyonight&hide_border=true" alt="claude-code-memory-system" />
+  </a>
+  <a href="https://github.com/Zeming-Yuan/english-coach">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Zeming-Yuan&repo=english-coach&theme=tokyonight&hide_border=true" alt="english-coach" />
+  </a>
+</p>
+
+- **[capstone-ai-kb](https://github.com/Zeming-Yuan/capstone-ai-kb)** — RAG + NL2SQL ReAct（手写，不调 LangChain）· 42 条中文真值 hit@10 = 0.90 · [Demo](https://capstone-ai-kb.onrender.com/docs)
+- **[claude-code-memory-system](https://github.com/Zeming-Yuan/claude-code-memory-system)** — Claude Code 分层记忆网关（L0–L3 · FastMCP · Hooks · BM25 + 向量）
+- **[english-coach](https://github.com/Zeming-Yuan/english-coach)** — 进行中 · 零基础英语 AI 学习（FSRS · DeepSeek · React 19 + FastAPI · 108 测试）
+
+---
+
+## 🤝 开源协作
 
 **已合并**
-
-- [wandb/rai-toolkit](https://github.com/wandb/rai-toolkit) — RAG 检索质量评测：[#37](https://github.com/wandb/rai-toolkit/pull/37) `RetrievalRelevanceScorer`、[#58](https://github.com/wandb/rai-toolkit/pull/58) `ContextPrecisionScorer` / `ContextRecallScorer`
-- [redis/redis-py](https://github.com/redis/redis-py) — [#4294](https://github.com/redis/redis-py/pull/4294)、[#4295](https://github.com/redis/redis-py/pull/4295) 示例 notebook 文档修正
-- [longsizhuo/BossZhiPin_Job_Search](https://github.com/longsizhuo/BossZhiPin_Job_Search) — [#40](https://github.com/longsizhuo/BossZhiPin_Job_Search/pull/40) 关键词提取失败不再写入空列表毒化粗筛缓存
+- [wandb/rai-toolkit](https://github.com/wandb/rai-toolkit) [#37](https://github.com/wandb/rai-toolkit/pull/37) [#58](https://github.com/wandb/rai-toolkit/pull/58) — RAG 检索评测
+- [redis/redis-py](https://github.com/redis/redis-py) [#4294](https://github.com/redis/redis-py/pull/4294) [#4295](https://github.com/redis/redis-py/pull/4295) — 示例文档
+- [BossZhiPin_Job_Search](https://github.com/longsizhuo/BossZhiPin_Job_Search) [#40](https://github.com/longsizhuo/BossZhiPin_Job_Search/pull/40) — 粗筛缓存修复
 
 **协作中**
+- [TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) [#1365](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1365) [#1366](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1366)
 
-- [TencentCloud/TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) — [#1365](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1365)（closed，未合并）、[#1366](https://github.com/TencentCloud/TencentDB-Agent-Memory/pull/1366)（open）记忆提炼 / 向量写入相关修复
+---
 
-## 技术栈
+## 🛠️ 技术栈
 
-**后端** · Python 3.12 · FastAPI · Uvicorn · Pydantic v2 · SQLAlchemy 2.0（async）· NestJS · Prisma · Go（规划中）· Redis · SQLite / PostgreSQL（asyncpg）· WebSocket · pytest · Vitest
+<!-- shields.io for-the-badge：深色友好、按组分行，避免散文一行字 -->
 
-**检索与 Agent** · ChromaDB · DocsGPT · bge-m3 / 本地嵌入端点 · BM25s + jieba · BM25 + RRF · MCP / FastMCP · ReAct 手写编排 · DeepSeek · 百炼（音色等）
+**Backend**
 
-**前端与桌面** · TypeScript · React 19 · Vite 6/7 · Tailwind 4 · CodeMirror · Tauri · Rust · Node.js 22 · Playwright
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
 
-**集成与渠道** · 飞书 · Chatwoot · WhatsApp Cloud API · Postiz（社媒 OAuth 代发）· 支付宝（可选）
+**AI / RAG / Agent**
 
-**工程与交付** · Docker / Compose · 私有化 on-prem · 金标评测与证据门禁 · 审批闸门与操作审计 · 内核沙箱（Seatbelt / bubblewrap）
+![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6F61?style=for-the-badge&logo=databricks&logoColor=white)
+![bge-m3](https://img.shields.io/badge/bge--m3-Embedding-5B21B6?style=for-the-badge)
+![BM25](https://img.shields.io/badge/BM25%20%2B%20RRF-Hybrid%20Search-111827?style=for-the-badge)
+![MCP](https://img.shields.io/badge/MCP%20%2F%20FastMCP-Protocol-0EA5E9?style=for-the-badge)
+![ReAct](https://img.shields.io/badge/ReAct-Hand--written-F59E0B?style=for-the-badge)
+![DeepSeek](https://img.shields.io/badge/DeepSeek-LLM-4F46E5?style=for-the-badge)
+
+**Frontend / Desktop**
+
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Tauri](https://img.shields.io/badge/Tauri-24C8DB?style=for-the-badge&logo=tauri&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+
+**DevOps / Delivery**
+
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Compose](https://img.shields.io/badge/Compose-%E7%A7%81%E6%9C%89%E5%8C%96-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
+![Eval](https://img.shields.io/badge/%E8%AF%84%E6%B5%8B%E9%87%91%E6%A0%87-Evidence-Gate-10B981?style=for-the-badge)
+![Audit](https://img.shields.io/badge/%E5%AE%A1%E6%89%B9%20%26%20%E5%AE%A1%E8%AE%A1-Boundary-EF4444?style=for-the-badge)
+
+---
+
+## 📊 GitHub Stats
+
+<!--
+隐私提示：默认只统计公开仓。若要把私有仓贡献算进卡片，
+在 URL 加 &count_private=true（会暴露私有活动量级，自行权衡）。
+主题：tokyonight / dark / radical / github_dark
+-->
+
+<div align="center">
+
+<img height="165" src="https://github-readme-stats.vercel.app/api?username=Zeming-Yuan&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true" alt="GitHub stats" />
+<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Zeming-Yuan&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="Top languages" />
+
+</div>
