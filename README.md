@@ -23,6 +23,41 @@
 
 ---
 
+## 🔭 当前在做
+
+与团队推进的产品线仓库多为私有，这里只写架构和约束，不放地址。
+
+### 数字员工总台
+
+浏览器里创建数字员工，派到多台电脑执行；机器留在内网，不开放入站端口。
+
+- 节点只主动 WSS 出站连 Hub；能力白名单 read / write / browser / execute，write 必须过审批闸门
+- 内核沙箱 macOS Seatbelt / Linux bubblewrap。Hub：Python 3.12 · FastAPI · SQLAlchemy 2.0 async · SQLite / PostgreSQL（asyncpg）· MCP · BM25s + jieba
+
+Web 控制面是 React 19 · TypeScript · Vite · Tailwind；飞书、看屏 / 远程终端、网页录制 → Skill 都走同一套白名单，没有审批记录的写操作不执行。
+
+### 编程助手
+
+浏览器里对话、预览、下载、发布；桌面端按项目挂多个编码 Agent，会话和 Git 工作区分开。
+
+- Web：DeepSeek 调度本机编码智能体；PDF 文字由 poppler 守卫进程提取；执行环境 Docker 隔离
+- 桌面：Tauri + Rust + Vite + CodeMirror；GUI 接入 Claude Code / Codex / Cursor / Grok；按项目会话 + Git worktree；Node.js 22
+
+PDF 解析不进主进程；多 Agent 各写各的 worktree，不共用一个工作目录。
+
+### 知识库与有据回答
+
+厂内 SOP / 设备手册做私有化问答；回答必须标出处，语料不出厂。
+
+- 载体 DocsGPT；本机 OpenAI 兼容的 chat / embed 端点，部署时改指向客户算力
+- 直播和客服共用同一套检索 Adapter；证据薄则转人工
+
+改检索或提示先跑金标集和 runner，部署证据要能复测；没有引用的回答不算完成。
+
+社媒 / 直播 / 客服 / 企业后台：官方 OAuth 一分多发（Postiz · NestJS · Prisma · Docker Compose）· 单房间评论 → 有据回答 → 克隆音色（DeepSeek · 百炼）· WhatsApp ↔ Chatwoot 与微信 Assist 人工接管 · 企业后台 NestJS · Prisma · PostgreSQL · React 19 · Playwright，只读控制台聚合指标 / 健康 / 审计。
+
+---
+
 ## 📦 三个代表项目
 
 <!-- pin 卡片：https://github.com/anuraghazra/github-readme-stats -->
