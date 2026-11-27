@@ -9,8 +9,8 @@
 
 **Python 后端 / AI 应用开发** · 广东
 
-目前从事 AI 应用开发，关注文档检索、Agent 工具接入与自动化验证。  
-这里展示公开项目与已合并的开源贡献，并附源码、运行说明与实验记录入口。
+目前在做 AI 应用开发，主要方向是文档检索、Agent 工具接入和自动化验证。  
+公开项目和已合并的开源贡献都附了源码、运行说明和实验记录入口。
 
 <!-- 顶栏技能图标：https://skillicons.dev -->
 <p>
@@ -31,30 +31,34 @@
 
 浏览器里创建数字员工，派到多台电脑执行；机器留在内网，不开放入站端口。
 
-- 节点只主动 WSS 出站连 Hub；能力白名单 read / write / browser / execute，write 必须过审批闸门
-- 内核沙箱 macOS Seatbelt / Linux bubblewrap。Hub：Python 3.12 · FastAPI · SQLAlchemy 2.0 async · SQLite / PostgreSQL（asyncpg）· MCP · BM25s + jieba
+- 节点只主动经 WSS 出站连接 Hub；能力白名单为 read / write / browser / execute，写操作必须经过审批
+- 内核沙箱：macOS Seatbelt / Linux bubblewrap。Hub 使用 Python 3.12 · FastAPI · SQLAlchemy 2.0 async · SQLite / PostgreSQL（asyncpg）· MCP · BM25s + jieba
 
-Web 控制面是 React 19 · TypeScript · Vite · Tailwind；飞书、看屏 / 远程终端、网页录制 → Skill 都走同一套白名单，没有审批记录的写操作不执行。
+Web 控制面为 React 19 · TypeScript · Vite · Tailwind。飞书、看屏 / 远程终端、网页录制生成 Skill，都走同一套白名单；没有审批记录的写操作不会执行。
 
 ### 编程助手
 
-浏览器里对话、预览、下载、发布；桌面端按项目挂多个编码 Agent，会话和 Git 工作区分开。
+浏览器里完成对话、预览、下载和发布；桌面端按项目挂多个编码 Agent，会话与 Git 工作区相互隔离。
 
-- Web：DeepSeek 调度本机编码智能体；PDF 文字由 poppler 守卫进程提取；执行环境 Docker 隔离
-- 桌面：Tauri + Rust + Vite + CodeMirror；GUI 接入 Claude Code / Codex / Cursor / Grok；按项目会话 + Git worktree；Node.js 22
+- Web：由 DeepSeek 调度本机编码智能体；PDF 文字由 poppler 守卫进程提取；执行环境用 Docker 隔离
+- 桌面：Tauri + Rust + Vite + CodeMirror；可接入 Claude Code / Codex / Cursor / Grok；按项目维护会话，并使用 Git worktree；Node.js 22
 
-PDF 解析不进主进程；多 Agent 各写各的 worktree，不共用一个工作目录。
+PDF 解析不进入主进程；多个 Agent 各自写入独立 worktree，不共用同一工作目录。
 
 ### 知识库与有据回答
 
-厂内 SOP / 设备手册做私有化问答；回答必须标出处，语料不出厂。
+用厂内 SOP 和设备手册做私有化问答：回答必须标明出处，语料不出厂。
 
-- 载体 DocsGPT；本机 OpenAI 兼容的 chat / embed 端点，部署时改指向客户算力
-- 直播和客服共用同一套检索 Adapter；证据薄则转人工
+- 载体为 DocsGPT；本机提供 OpenAI 兼容的 chat / embed 端点，部署时改指向客户算力
+- 直播和客服共用同一套检索 Adapter；证据不足时转人工
 
-改检索或提示先跑金标集和 runner，部署证据要能复测；没有引用的回答不算完成。
+改检索或提示前，先跑金标集和 runner；部署结果要能复测。没有引用的回答不算完成。
 
-社媒 / 直播 / 客服 / 企业后台：官方 OAuth 一分多发（Postiz · NestJS · Prisma · Docker Compose）· 单房间评论 → 有据回答 → 克隆音色（DeepSeek · 百炼）· WhatsApp ↔ Chatwoot 与微信 Assist 人工接管 · 企业后台 NestJS · Prisma · PostgreSQL · React 19 · Playwright，只读控制台聚合指标 / 健康 / 审计。
+社媒、直播、客服和企业后台也在推进：
+
+- 社媒：官方 OAuth 一分多发（Postiz · NestJS · Prisma · Docker Compose）
+- 直播 / 客服：单房间评论 → 有据回答 → 克隆音色（DeepSeek · 百炼）；WhatsApp ↔ Chatwoot，微信 Assist 支持人工接管
+- 企业后台：NestJS · Prisma · PostgreSQL · React 19 · Playwright；只读控制台聚合指标、健康与审计
 
 ---
 
@@ -75,8 +79,8 @@ PDF 解析不进主进程；多 Agent 各写各的 worktree，不共用一个工
 
 ### 1. [capstone-ai-kb](https://github.com/Zeming-Yuan/capstone-ai-kb) — RAG 与数据库问答
 
-文档检索与 NL2SQL 两条查询路径：文档问答走向量检索与混合查询，数据库问答走项目内的 ReAct 工具调用循环（只读 SQL）。  
-仓库内有 42 条评测问题、检索策略对比脚本，以及 FastAPI、JWT 认证、流式返回与 Docker Compose 部署相关实现。
+可本地部署的问答服务：文档问答走向量检索与混合查询，数据库问答走项目内的 ReAct 工具调用循环（只读 SQL）。  
+仓库里有 42 条评测问题、检索策略对比脚本，以及 FastAPI、JWT 认证、流式返回和 Docker Compose 部署实现。
 
 - 实现入口：[app/agent.py](https://github.com/Zeming-Yuan/capstone-ai-kb/blob/main/app/agent.py) · [app/vector_store.py](https://github.com/Zeming-Yuan/capstone-ai-kb/blob/main/app/vector_store.py)
 - 评测与实验：[evaluation/](https://github.com/Zeming-Yuan/capstone-ai-kb/tree/main/evaluation)
@@ -84,8 +88,8 @@ PDF 解析不进主进程；多 Agent 各写各的 worktree，不共用一个工
 
 ### 2. [english-coach](https://github.com/Zeming-Yuan/english-coach/tree/dev) — 持续开发的英语学习应用
 
-FastAPI + React 19（Vite）：FSRS 复习调度，以及提取练习、听写/测验等多种练习形式。  
-包含课程进度、异常重试与刷新、V3 备份恢复等行为；默认分支为 `dev`。
+用 FastAPI 和 React 19（Vite）做的英语学习应用，支持 FSRS 复习调度，以及提取练习、听写和测验等练习形式。  
+也包含课程进度、异常重试与刷新、V3 备份恢复；默认分支是 `dev`。
 
 - 后端调度与备份：[scheduler.py](https://github.com/Zeming-Yuan/english-coach/blob/dev/app/services/scheduler.py) · [backup.py](https://github.com/Zeming-Yuan/english-coach/blob/dev/app/services/backup.py)
 - 测试与验收记录：[tests/](https://github.com/Zeming-Yuan/english-coach/tree/dev/tests) · [docs/release-evidence.md](https://github.com/Zeming-Yuan/english-coach/blob/dev/docs/release-evidence.md)
@@ -93,7 +97,7 @@ FastAPI + React 19（Vite）：FSRS 复习调度，以及提取练习、听写/�
 ### 3. [claude-code-memory-system](https://github.com/Zeming-Yuan/claude-code-memory-system) — Claude Code 记忆接入示例
 
 Gateway 本体基于 [TencentCloud/TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory)。  
-本仓库提供 hooks、FastMCP 接入、上下文摘要注入与本地部署示例。
+本仓库在此之上补充了 hooks、FastMCP 接入、上下文摘要注入和本地部署示例。
 
 - hooks / MCP：[hooks/](https://github.com/Zeming-Yuan/claude-code-memory-system/tree/main/hooks) · [mcp-server/](https://github.com/Zeming-Yuan/claude-code-memory-system/tree/main/mcp-server)
 
@@ -103,9 +107,9 @@ Gateway 本体基于 [TencentCloud/TencentDB-Agent-Memory](https://github.com/Te
 
 | 仓库 | PR | 实际改动 |
 |---|---|---|
-| [wandb/rai-toolkit](https://github.com/wandb/rai-toolkit) | [#37](https://github.com/wandb/rai-toolkit/pull/37) · [#58](https://github.com/wandb/rai-toolkit/pull/58) | 检索相关性 / Context Precision·Recall 评分器，含测试与文档 |
-| [BossZhiPin_Job_Search](https://github.com/longsizhuo/BossZhiPin_Job_Search) | [#40](https://github.com/longsizhuo/BossZhiPin_Job_Search/pull/40) | 关键词提取失败时不再缓存空列表，并补回归测试 |
-| [redis/redis-py](https://github.com/redis/redis-py) | [#4294](https://github.com/redis/redis-py/pull/4294) · [#4295](https://github.com/redis/redis-py/pull/4295) | 示例 notebook 拼写与失效链接修正（文档贡献） |
+| [wandb/rai-toolkit](https://github.com/wandb/rai-toolkit) | [#37](https://github.com/wandb/rai-toolkit/pull/37) · [#58](https://github.com/wandb/rai-toolkit/pull/58) | 为检索相关性、Context Precision 和 Context Recall 补了评分器，并加上测试与文档 |
+| [BossZhiPin_Job_Search](https://github.com/longsizhuo/BossZhiPin_Job_Search) | [#40](https://github.com/longsizhuo/BossZhiPin_Job_Search/pull/40) | 关键词提取失败时不再把空列表写入缓存，并补了回归测试 |
+| [redis/redis-py](https://github.com/redis/redis-py) | [#4294](https://github.com/redis/redis-py/pull/4294) · [#4295](https://github.com/redis/redis-py/pull/4295) | 修正示例 notebook 的拼写和失效链接（文档贡献） |
 
 ---
 
