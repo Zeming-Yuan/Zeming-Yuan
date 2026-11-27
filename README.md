@@ -25,40 +25,25 @@
 
 ## 🔭 当前在做
 
-与团队推进的产品线仓库多为私有，这里只写能公开说的能力与约束，不放地址。
+与团队推进的产品线仓库多为私有，这里只写能公开说的设计约束，不放地址。
 
 ### 数字员工总台
 
-**把数字员工派到多台内网电脑执行，机器不必对外开放端口。**
+**内网执行、不对外开放端口：节点只主动经 WSS 连接 Hub。**
 
-- 节点只主动经 WSS 出站连接 Hub；能力白名单为 read / write / browser / execute，写操作必须经过审批
-- 内核沙箱：macOS Seatbelt / Linux bubblewrap。Hub 使用 Python 3.12 · FastAPI · SQLAlchemy 2.0 async · SQLite / PostgreSQL（asyncpg）· MCP · BM25s + jieba
-
-Web 控制面为 React 19 · TypeScript · Vite · Tailwind。飞书、看屏 / 远程终端、网页录制生成 Skill，都走同一套白名单；没有审批记录的写操作不会执行。
+- 能力白名单为 read / write / browser / execute；写操作必须带审批记录，否则不执行
+- 内核沙箱用 macOS Seatbelt / Linux bubblewrap，限制节点进程权限
+- Hub：Python 3.12 · FastAPI · SQLAlchemy 2.0 async · SQLite / PostgreSQL（asyncpg）· MCP · BM25s + jieba
+- Web 控制面：React 19 · TypeScript · Vite · Tailwind；飞书、看屏 / 远程终端、网页录制生成 Skill，都走同一套白名单
 
 ### 编程助手
 
-**浏览器里对话、预览到发布；桌面端按项目并行多个编码 Agent，会话和代码目录互不干扰。**
+**编码 Agent 按项目隔离：会话分开，Git worktree 分开，PDF 解析不进主进程。**
 
 - Web：由 DeepSeek 调度本机编码智能体；PDF 文字由 poppler 守卫进程提取；执行环境用 Docker 隔离
-- 桌面：Tauri + Rust + Vite + CodeMirror；可接入 Claude Code / Codex / Cursor / Grok；按项目维护会话，并使用 Git worktree；Node.js 22
+- 桌面：Tauri + Rust + Vite + CodeMirror，可接入 Claude Code / Codex / Cursor / Grok；按项目维护会话与 worktree；Node.js 22
 
-PDF 解析不进入主进程；多个 Agent 各自写入独立 worktree，不共用同一工作目录。
-
-### 知识库与有据回答
-
-**厂内手册私有化问答：没有出处的回答不算完成，语料不出厂。**
-
-- 载体为 DocsGPT；本机提供 OpenAI 兼容的 chat / embed 端点，部署时改指向客户算力
-- 直播和客服共用同一套检索 Adapter；证据不足时转人工
-
-改检索或提示前，先跑金标集和 runner；部署结果要能复测。
-
-社媒、直播、客服和企业后台也在推进：
-
-- 社媒：官方 OAuth 一分多发（Postiz · NestJS · Prisma · Docker Compose）
-- 直播 / 客服：单房间评论 → 有据回答 → 克隆音色（DeepSeek · 百炼）；WhatsApp ↔ Chatwoot，微信 Assist 支持人工接管
-- 企业后台：NestJS · Prisma · PostgreSQL · React 19 · Playwright；只读控制台聚合指标、健康与审计
+多个 Agent 各自写入独立 worktree，不共用同一工作目录，避免改到别人的文件。
 
 ---
 
