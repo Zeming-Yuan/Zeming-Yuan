@@ -1,156 +1,59 @@
-<div align="center">
+### Hi, I'm Zeming
 
-# Hi, I'm Zeming
-
-<!-- Typing SVG: https://github.com/DenverCoder1/readme-typing-svg -->
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1200&color=79C0FF&center=true&vCenter=true&width=520&lines=Python+%C2%B7+%E5%90%8E%E7%AB%AF+%2F+AI+%E5%BA%94%E7%94%A8+%C2%B7+RAG+%2F+Agent+%2F+MCP;FastAPI+%C2%B7+Redis+%C2%B7+Docker+%C2%B7+%E6%A3%80%E7%B4%A2%E8%AF%84%E6%B5%8B+%26+%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95;%E5%B9%BF%E4%B8%9C+%C2%B7+%E5%85%AC%E5%BC%80%E9%A1%B9%E7%9B%AE+%26+%E5%B7%B2%E5%90%88%E5%B9%B6%E5%BC%80%E6%BA%90%E8%B4%A1%E7%8C%AE)](https://git.io/typing-svg)
-
-**写作** · [掘金 · Python 上下文管理器深度剖析](https://juejin.cn/post/7676404079284469796)
-
-**Python 后端 / AI 应用开发** · 广东
-
-目前从事 AI 应用开发，关注文档检索、Agent 工具接入与自动化验证。  
-这里展示公开项目与已合并的开源贡献，并附源码、运行说明与实验记录入口。
-
-<!-- 顶栏技能图标：https://skillicons.dev -->
-<p>
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=python,fastapi,redis,postgres,sqlite,docker,react,nodejs,vite,linux,githubactions" alt="skills" />
-  </a>
-</p>
-
-</div>
+AI 应用工程师，习惯以**单人端到端**的方式推动产品从 0 到上线。技术上以 **Python 后端、RAG 评测与 Agent 工程**为核心，覆盖全栈开发、安全隔离、私有化推理部署与自动化回归验证。
 
 ---
 
-## 🔭 当前在做
+### 核心产品实践（商业项目，代码不公开）
 
-与团队推进的产品线仓库多为私有，这里只写架构和约束，不放地址。
+> 以下核心系统均由我独立负责从架构设计、前后端 / 客户端研发到部署上线的完整闭环，这里仅记录脱敏后的关键工程设计与取舍：
 
-### 数字员工总台
+#### 1. 跨端内网 Agent 调度与执行平台（Web + 桌面端 + Android）
+面向企业多机任务自动化场景，在 Web 与移动端创建并编排任务，分发至客户内网多台受管终端执行，支持客户端安装包分发与 CI/CD 自动发布回滚。
+- **零入站暴露**：受管节点仅通过 WSS 主动出站连接中心 Hub，客户内网无需开放任何入站端口。
+- **Fail-Closed 三层安全边界**：总台侧按 `read / write / browser / execute` 白名单鉴权，高风险写操作强制过审批闸门，远程命令参数统一经 `shlex` / base64 防注入；节点侧以内核沙箱（macOS Seatbelt / Linux `bubblewrap` / Windows 受限令牌）屏蔽宿主家目录、`/etc` 与 `/tmp`，由内核直接拦截越界读写——**探测不到可靠沙箱时拒绝执行，绝不降级回退静态正则检查**。
+- **分布式可靠交办与人工接管**：围绕会话 / 请求 / 任务三层状态机设计幂等提交回执，断网重试不重复派发；原生 Android 客户端（Kotlin + Jetpack Compose，Android Keystore AES-GCM 保护本地凭据与待确认意图）支持实时看屏、暂停 Agent、人类临时接管输入（如处理验证码）并明确交还继续执行，断线或退后台自动撤销控制租约。
+- **工程化沉淀**：维护 120+ 份架构决策记录（ADR），配备独立 HTTPS 隔离联调夹具与端到端真机/桌面回归验收。
 
-浏览器里创建数字员工，派到多台电脑执行；机器留在内网，不开放入站端口。
+#### 2. Web AI 编程工作台（对话生成 → 预览 → 隔离发布）
+面向浏览器场景的一站式编码工作台，支持对话生成、实时预览与一键发布静态站点或带数据库的全栈应用。
+- **同站隔离与零停机发布**：预览与线上应用分属独立子域名源，隔离访客登录 Cookie 与工作台账号；静态站点发布采用独立版本目录 + 原子清单切换，失败或进程异常退出自动保留旧版；后台应用的线上源码、运行实例与 SQLite 业务数据与预览环境完全解耦。
+- **受限子进程安全隔离**：用 C 编写专用启动器（`-Wall -Wextra -Werror`）隔离 `poppler` PDF 文本提取，硬限制页数、10 秒超时与 256 MiB 地址空间，防止畸形文档拖垮主服务；执行环境通过 Docker 隔离，并具备细粒度功能熔断开关与公网部署默认口令防呆校验。
 
-- 节点只主动 WSS 出站连 Hub；能力白名单 read / write / browser / execute，write 必须过审批闸门
-- 内核沙箱 macOS Seatbelt / Linux bubblewrap。Hub：Python 3.12 · FastAPI · SQLAlchemy 2.0 async · SQLite / PostgreSQL（asyncpg）· MCP · BM25s + jieba
-
-Web 控制面是 React 19 · TypeScript · Vite · Tailwind；飞书、看屏 / 远程终端、网页录制 → Skill 都走同一套白名单，没有审批记录的写操作不执行。
-
-### 编程助手
-
-浏览器里对话、预览、下载、发布；桌面端按项目挂多个编码 Agent，会话和 Git 工作区分开。
-
-- Web：DeepSeek 调度本机编码智能体；PDF 文字由 poppler 守卫进程提取；执行环境 Docker 隔离
-- 桌面：Tauri + Rust + Vite + CodeMirror；GUI 接入 Claude Code / Codex / Cursor / Grok；按项目会话 + Git worktree；Node.js 22
-
-PDF 解析不进主进程；多 Agent 各写各的 worktree，不共用一个工作目录。
-
-### 知识库与有据回答
-
-厂内 SOP / 设备手册做私有化问答；回答必须标出处，语料不出厂。
-
-- 载体 DocsGPT；本机 OpenAI 兼容的 chat / embed 端点，部署时改指向客户算力
-- 直播和客服共用同一套检索 Adapter；证据薄则转人工
-
-改检索或提示先跑金标集和 runner，部署证据要能复测；没有引用的回答不算完成。
-
-社媒 / 直播 / 客服 / 企业后台：官方 OAuth 一分多发（Postiz · NestJS · Prisma · Docker Compose）· 单房间评论 → 有据回答 → 克隆音色（DeepSeek · 百炼）· WhatsApp ↔ Chatwoot 与微信 Assist 人工接管 · 企业后台 NestJS · Prisma · PostgreSQL · React 19 · Playwright，只读控制台聚合指标 / 健康 / 审计。
+#### 3. 私有化多模态推理集群与企业知识库交付
+- **双节点私有算力推理网关**：双机 ARM64 算力节点间通过 SSH 加密隧道回环互联，统一经 OpenAI 兼容网关与内部 CA HTTPS 鉴权对外提供服务（模型端口不暴露局域网）。跑通 vLLM 200K 长上下文（含流式断连槽位清理）、图像生成/编辑串行轮换（配 20 GiB 内存保护与过载 503 拒单），以及跨节点交替调度的批量视频生成流水线（9 帧尾部重叠拼接 + 85°C 温控硬停）。
+- **工厂私有化知识库与离线评测**：面向厂内 SOP / 设备手册实现语料不出厂问答与原文引用溯源，搭建可复现离线金标评测 Runner，通过量化归因定位“检索桥挤占 top-k 引发召回回归”与“本地推理端点 `reasoning_content` 挤占输出预算致空答”等真实线上问题。
+- **工程取舍（Build vs. Integrate）**：对于知识库底座、多平台社媒分发、微信桌面客服与语音直播等交付型业务，优先基于 DocsGPT / Postiz / Chatwoot 等成熟开源底座做二开集成与可控性加固，将自研精力聚焦在调度、沙箱隔离、推理网关与评测门禁上。
 
 ---
 
-## 📦 三个代表项目
+### 公开项目（可查看源码与评测记录）
 
-<!-- pin 卡片：https://github.com/anuraghazra/github-readme-stats -->
-<p>
-  <a href="https://github.com/Zeming-Yuan/capstone-ai-kb">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Zeming-Yuan&repo=capstone-ai-kb&theme=tokyonight&hide_border=true" alt="capstone-ai-kb" />
-  </a>
-  <a href="https://github.com/Zeming-Yuan/english-coach">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Zeming-Yuan&repo=english-coach&theme=tokyonight&hide_border=true" alt="english-coach" />
-  </a>
-  <a href="https://github.com/Zeming-Yuan/claude-code-memory-system">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Zeming-Yuan&repo=claude-code-memory-system&theme=tokyonight&hide_border=true" alt="claude-code-memory-system" />
-  </a>
-</p>
+- **[capstone-ai-kb](https://github.com/Zeming-Yuan/capstone-ai-kb)** — **手写 ReAct 的 RAG 与只读 NL2SQL 双路径问答**  
+  不依赖 LangChain 黑盒封装，手写 ReAct 工具调用循环区分文档检索与只读 SQL 查询。基于 Python 官方文档（3,341 chunks）构建 42 题评测集，达 `hit@3=0.79`、`hit@5=0.83`、`hit@10=0.90`；实测发现跨语言场景下字符级 BM25 对中文查询为负优化，因此设计 CJK 检索路由；连续 5 轮实验确认 `bge-reranker-v2-m3` 掉点（`0.74 → 0.55`）后按数据下线重排。  
+  [agent.py](https://github.com/Zeming-Yuan/capstone-ai-kb/blob/main/app/agent.py) · [vector_store.py](https://github.com/Zeming-Yuan/capstone-ai-kb/blob/main/app/vector_store.py) · [evaluation/](https://github.com/Zeming-Yuan/capstone-ai-kb/tree/main/evaluation) · [设计复盘](https://juejin.cn/post/7665944296248442906)
 
-### 1. [capstone-ai-kb](https://github.com/Zeming-Yuan/capstone-ai-kb) — RAG 与数据库问答
+- **[english-coach](https://github.com/Zeming-Yuan/english-coach/tree/dev)** — **基于 FSRS 的英语学习应用（FastAPI + React）**  
+  围绕间隔重复（`py-fsrs`）与主动回忆练习搭建完整学习闭环，按近 7 个学习日首答通过率动态调节每日词量，区分独立回忆与带提示作答的排期规则；覆盖数据备份恢复、后端单测与 21 条 Playwright 端到端回归测试。  
+  [scheduler.py](https://github.com/Zeming-Yuan/english-coach/blob/dev/app/services/scheduler.py) · [backup.py](https://github.com/Zeming-Yuan/english-coach/blob/dev/app/services/backup.py) · [tests/](https://github.com/Zeming-Yuan/english-coach/tree/dev/tests)
 
-文档检索与 NL2SQL 两条查询路径：文档问答走向量检索与混合查询，数据库问答走项目内的 ReAct 工具调用循环（只读 SQL）。  
-仓库内有 42 条评测问题、检索策略对比脚本，以及 FastAPI、JWT 认证、流式返回与 Docker Compose 部署相关实现。
-
-- 实现入口：[app/agent.py](https://github.com/Zeming-Yuan/capstone-ai-kb/blob/main/app/agent.py) · [app/vector_store.py](https://github.com/Zeming-Yuan/capstone-ai-kb/blob/main/app/vector_store.py)
-- 评测与实验：[evaluation/](https://github.com/Zeming-Yuan/capstone-ai-kb/tree/main/evaluation)
-- 设计文：[掘金 · 手写 RAG 管线的 5 个设计决策](https://juejin.cn/post/7665944296248442906)
-
-### 2. [english-coach](https://github.com/Zeming-Yuan/english-coach/tree/dev) — 持续开发的英语学习应用
-
-FastAPI + React 19（Vite）：FSRS 复习调度，以及提取练习、听写/测验等多种练习形式。  
-包含课程进度、异常重试与刷新、V3 备份恢复等行为；默认分支为 `dev`。
-
-- 后端调度与备份：[scheduler.py](https://github.com/Zeming-Yuan/english-coach/blob/dev/app/services/scheduler.py) · [backup.py](https://github.com/Zeming-Yuan/english-coach/blob/dev/app/services/backup.py)
-- 测试与验收记录：[tests/](https://github.com/Zeming-Yuan/english-coach/tree/dev/tests) · [docs/release-evidence.md](https://github.com/Zeming-Yuan/english-coach/blob/dev/docs/release-evidence.md)
-
-### 3. [claude-code-memory-system](https://github.com/Zeming-Yuan/claude-code-memory-system) — Claude Code 记忆接入示例
-
-Gateway 本体基于 [TencentCloud/TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory)。  
-本仓库提供 hooks、FastMCP 接入、上下文摘要注入与本地部署示例。
-
-- hooks / MCP：[hooks/](https://github.com/Zeming-Yuan/claude-code-memory-system/tree/main/hooks) · [mcp-server/](https://github.com/Zeming-Yuan/claude-code-memory-system/tree/main/mcp-server)
+- **[claude-code-memory-system](https://github.com/Zeming-Yuan/claude-code-memory-system)** — **Claude Code 本地分层记忆接入**  
+  基于 [TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) 独立 Gateway 封装 Hooks 与 FastMCP 工具层，通过渐进式披露摘要注入（章节骨架 + 按需下钻检索）在控制每轮 Token 开销的同时保留原始事实溯源。  
+  [hooks/](https://github.com/Zeming-Yuan/claude-code-memory-system/tree/main/hooks) · [mcp-server/](https://github.com/Zeming-Yuan/claude-code-memory-system/tree/main/mcp-server)
 
 ---
 
-## 🤝 已合并的开源贡献
+### 开源贡献
 
-| 仓库 | PR | 实际改动 |
-|---|---|---|
-| [wandb/rai-toolkit](https://github.com/wandb/rai-toolkit) | [#37](https://github.com/wandb/rai-toolkit/pull/37) · [#58](https://github.com/wandb/rai-toolkit/pull/58) | 检索相关性 / Context Precision·Recall 评分器，含测试与文档 |
-| [BossZhiPin_Job_Search](https://github.com/longsizhuo/BossZhiPin_Job_Search) | [#40](https://github.com/longsizhuo/BossZhiPin_Job_Search/pull/40) | 关键词提取失败时不再缓存空列表，并补回归测试 |
-| [redis/redis-py](https://github.com/redis/redis-py) | [#4294](https://github.com/redis/redis-py/pull/4294) · [#4295](https://github.com/redis/redis-py/pull/4295) | 示例 notebook 拼写与失效链接修正（文档贡献） |
+- **[wandb/rai-toolkit](https://github.com/wandb/rai-toolkit)**（[#37](https://github.com/wandb/rai-toolkit/pull/37) · [#58](https://github.com/wandb/rai-toolkit/pull/58)）：贡献 RAG 检索相关性与 Context Precision / Recall 评分器，包含单元测试与使用文档。
 
 ---
 
-## 🛠️ 项目中使用的技术
-
-**Backend**
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
-
-**AI / RAG / Agent**
-
-![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6F61?style=for-the-badge)
-![MCP](https://img.shields.io/badge/MCP%20%2F%20FastMCP-Protocol-0EA5E9?style=for-the-badge)
-![ReAct](https://img.shields.io/badge/ReAct-Agent%20loop-F59E0B?style=for-the-badge)
-![FSRS](https://img.shields.io/badge/FSRS-Scheduler-5B21B6?style=for-the-badge)
-
-**Frontend / DevOps**
-
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
-
----
-
-## 📝 技术笔记
+### 写作
 
 - [手写 RAG 管线的 5 个设计决策](https://juejin.cn/post/7665944296248442906)
 - [Python 上下文管理器深度剖析](https://juejin.cn/post/7676404079284469796)
 
 ---
 
-## 📊 GitHub Stats
-
-<div align="center">
-
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=Zeming-Yuan&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true" alt="GitHub stats" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Zeming-Yuan&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="Top languages" />
-
-</div>
+**核心技术栈**：Python · FastAPI · SQLAlchemy · PostgreSQL · Redis · SQLite · RAG / Eval · MCP · vLLM · Docker · Linux · React / TypeScript · Kotlin (Compose) · Playwright
